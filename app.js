@@ -6,7 +6,7 @@ var app = express();
 
 app.set('view engine', 'ejs');
 
-mongoose.connect("mongodb://localhost/postings_api");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/postings_api");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
@@ -19,6 +19,8 @@ var postingsRouter = require('./routes/api/postings');
 app.use('/', indexRouter);
 app.use('/api/postings', postingsRouter);
 
-app.listen(8000, function(){
+var port = process.env.PORT || 8000;
+
+app.listen(port, function(){
   console.log('Im Up');
 });
