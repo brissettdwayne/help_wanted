@@ -19,7 +19,7 @@ var postingsRouter = require('./routes/api/postings');
 app.use('/', indexRouter);
 app.use('/api/postings', postingsRouter);
 
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 3000;
 
 app.listen(port, function(){
   console.log('Im Up');
